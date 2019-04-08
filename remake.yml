@@ -5,6 +5,7 @@ packages:
   - gridExtra
   - lme4
   - ggplot2
+  - tinytex
 
 sources:
   - R
@@ -13,16 +14,15 @@ targets:
   all:
     depends:
       - ms.pdf
-      - analysis.R
 
   ms.pdf:
-    command: latex_build("MS.tex", bibliography="output/refs-main.bib", clean=TRUE)
+    command: pdflatex("MS.tex")
     depends:
       - figures_main
       - ms-suppinfo.pdf
       
   ms-suppinfo.pdf:
-    command: latex_build("ms-suppinfo.tex", bibliography="output/refs-suppmat.bib", clean=FALSE)
+    command: pdflatex("ms-suppinfo.tex")
     # Don't clean because we need info for cross references
     depends:
       - figures_suppmat
@@ -57,14 +57,6 @@ targets:
       - output/FigA8.pdf
       - output/FigA9.pdf
       - output/GraphicalAbstract.pdf
-
-
-# ------- Rscript --------------------------
-# used to generate output for those who don't like remake
-
-  analysis.R:
-    packages: remake
-    command: make_script(file=target_name)
 
 # ------- References --------------------------
 
