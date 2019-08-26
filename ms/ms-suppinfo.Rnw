@@ -1,11 +1,10 @@
 \documentclass[10pt,twoside]{article}
-
-\usepackage{suppmat}
 \usepackage{listings}
 \usepackage[T1]{fontenc} % Better underscores, shockingly.
 \usepackage{graphicx}
 
 
+\usepackage{ms/suppmat}
 \definecolor{grey}{rgb}{0.5, 0.5, 0.5}
 \newcommand{\smurl}[1]{\url{#1}}
 \newcommand{\ud}{\ensuremath{\rm{d}}}
@@ -35,7 +34,7 @@
 \date{}
 
 \usepackage[]{natbib}
-\bibliographystyle{mee}
+\bibliographystyle{ms/mee}
 
 \begin{document}
 
@@ -291,7 +290,7 @@ articles. The x axis represents the article ID sorted by the average reported co
 
 \clearpage
 
-\bibliography{output/refs-suppmat}
+\bibliography{ms/refs-suppmat}
 
 \end{document}
 

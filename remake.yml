@@ -13,23 +13,23 @@ sources:
 targets:
   all:
     depends:
-      - ms.pdf
+      - ms/ms.pdf
 
-  ms.pdf:
-    command: pdflatex("MS.tex")
+  ms/ms.pdf:
+    command: pdflatex("ms/ms.tex")
     depends:
       - figures_main
-      - ms-suppinfo.pdf
-      - output/refs-main.bib
+      - ms/ms-suppinfo.pdf
+      - ms/refs-main.bib
       
-  ms-suppinfo.pdf:
-    command: pdflatex("ms-suppinfo.tex")
+  ms/ms-suppinfo.pdf:
+    command: pdflatex("ms/ms-suppinfo.tex")
     # Don't clean because we need info for cross references
     depends:
       - figures_suppmat
-      - output/refs-suppmat.bib
+      - ms/refs-suppmat.bib
 
-  ms-suppinfo.tex:
+  ms/ms-suppinfo.tex:
     depends:
       - R/model.R
       - GCi
@@ -71,13 +71,13 @@ targets:
   combined_bib:
     command: merge_bib_files(meta_bib, paper_bib)
 
-  output/refs-main.bib:
+  ms/refs-main.bib:
     command: write.bib(combined_bib, file = target_name)
 
   suppmat_bib:
     command: merge_bib_files(combined_bib, read_bib)
 
-  output/refs-suppmat.bib:
+  ms/refs-suppmat.bib:
     command: write.bib(suppmat_bib, file = target_name)
 
   read_bib:
