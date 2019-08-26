@@ -20,12 +20,14 @@ targets:
     depends:
       - figures_main
       - ms-suppinfo.pdf
+      - output/refs-main.bib
       
   ms-suppinfo.pdf:
     command: pdflatex("ms-suppinfo.tex")
     # Don't clean because we need info for cross references
     depends:
       - figures_suppmat
+      - output/refs-suppmat.bib
 
   ms-suppinfo.tex:
     depends:
