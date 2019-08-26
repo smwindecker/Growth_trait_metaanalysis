@@ -8,6 +8,8 @@ downloads
 *.png
 *.html
 *.docx
+*.log
 ms-suppinfo.tex
 *_cache*
 *_files*
+.remake
