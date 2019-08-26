@@ -2,7 +2,7 @@
 \usepackage{listings}
 \usepackage[T1]{fontenc} % Better underscores, shockingly.
 \usepackage{graphicx}
-
+\usepackage[utf8]{inputenc} 
 
 \usepackage{ms/suppmat}
 \definecolor{grey}{rgb}{0.5, 0.5, 0.5}
