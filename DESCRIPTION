@@ -21,7 +21,7 @@ Authors@R: c(
            email = "daniel.falster@unsw.edu.au",
            c(ORCID = "0000-0002-9814-092X"))
     )
-Description: This repository contained the code needed to reproduce the article: Anais Gibert, Emma F. Gray, Mark Westoby, Ian J. Wright, and Daniel S. Falster. On the link between functional traits and growth rate: meta-analysis shows effects change with plant size, as predicted. Journal of Ecology. doi: 10.1111/1365-2745.12594 
+Description: This repository contains the code needed to reproduce the article: Anais Gibert, Emma F. Gray, Mark Westoby, Ian J. Wright, and Daniel S. Falster. On the link between functional traits and growth rate: meta-analysis shows effects change with plant size, as predicted. Journal of Ecology. doi: 10.1111/1365-2745.12594 
 License: MIT + file LICENSE
 Depends: 
     bibtex,
