@@ -123,10 +123,7 @@ figure_graphical_abstract(GIi, GIrgr, GIagr)
 dev.off()
 
 # Documents ---------------
-
 knit("ms/ms-suppinfo.Rnw", output = "ms/ms-suppinfo.tex")
 pdflatex("ms/ms-suppinfo.tex")
 pdflatex("ms/ms.tex")
-
-
 
