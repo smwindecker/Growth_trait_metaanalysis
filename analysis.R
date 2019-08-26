@@ -7,25 +7,31 @@ library(gridExtra)
 library(lme4)
 library(ggplot2)
 library(downloader)
+library(knitr)
+library(tinytex)
 
-# source function scripts -----------
-source("R/build.R")
+# Source function scripts -----------
 source("R/data_processing.R")
 source("R/figures.R")
 source("R/model.R")
 source("R/plots.R")
 source("R/utils.R")
 
-# Data ------------------
+dir.create("output", FALSE, TRUE)
+dir.create("downloads", FALSE, TRUE)
+
+# Data downloads -------------------
 download_baad("downloads/baad.rds")
 
+# Data processing ----------
 paper_bib <- read.bib("references/paper.bib")
 meta_bib <- read.bib("references/metaanalyses.bib")
 combined_bib <- merge_bib_files(meta_bib, paper_bib)
-write.bib(combined_bib, file = "output/refs-main.bib")
+write.bib(combined_bib, file = "ms/refs-main.bib")
+
 read_bib <- read.bib("references/read.bib")
 suppmat_bib <- merge_bib_files(combined_bib, read_bib)
-write.bib(suppmat_bib, file = "output/refs-suppmat.bib")
+write.bib(suppmat_bib, file = "ms/refs-suppmat.bib")
 
 AllData <- clean_raw_data("data/CompileData.csv")
 CleanData <- standardise_data(AllData)
@@ -36,13 +42,13 @@ CoordTable <- build_map_data(CleanData)
 IdealData_rgr <- subset_growth(IdealData, "RGR")
 IdealData_agr <- subset_growth(IdealData, "AbGR")
 CompleteData_rgr <- subset_growth(CompleteData_inter, "RGR")
+
 GCi <- list_by_trait(CompleteData_inter)
 GIi <- list_by_trait(IdealData)
 GIrgr <- list_by_trait(IdealData_rgr)
 GIagr <- list_by_trait(IdealData_agr)
 GCrgr <- list_by_trait(CompleteData_rgr)
 Snapshot <- snapshot_websci("data/ref.traits/WebSci_all.csv")
-
 
 RCi1 <- EffectSizeSum(CompleteData_rgr)
 RCi <- list_by_trait(RCi1)
@@ -117,10 +123,10 @@ figure_graphical_abstract(GIi, GIrgr, GIagr)
 dev.off()
 
 # Documents ---------------
-knitr::knit("ms-suppinfo.Rnw", output = "ms-suppinfo.tex")
-tinytex::pdflatex("ms-suppinfo.tex", output = "ms-suppinfo.pdf")
 
-latex_build("MS.tex", bibliography = "output/refs-main.bib", clean = TRUE)
+knit("ms/ms-suppinfo.Rnw", output = "ms/ms-suppinfo.tex")
+pdflatex("ms/ms-suppinfo.tex")
+pdflatex("ms/ms.tex")
 
 
 
