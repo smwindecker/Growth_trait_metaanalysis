@@ -5,6 +5,7 @@ packages:
   - gridExtra
   - lme4
   - ggplot2
+  - tinytex
 
 sources:
   - R
@@ -12,22 +13,23 @@ sources:
 targets:
   all:
     depends:
-      - ms.pdf
-      - analysis.R
+      - ms/ms.pdf
 
-  ms.pdf:
-    command: latex_build("MS.tex", bibliography="output/refs-main.bib", clean=TRUE)
+  ms/ms.pdf:
+    command: pdflatex("ms/ms.tex")
     depends:
       - figures_main
-      - ms-suppinfo.pdf
+      - ms/ms-suppinfo.pdf
+      - ms/refs-main.bib
       
-  ms-suppinfo.pdf:
-    command: latex_build("ms-suppinfo.tex", bibliography="output/refs-suppmat.bib", clean=FALSE)
+  ms/ms-suppinfo.pdf:
+    command: pdflatex("ms/ms-suppinfo.tex")
     # Don't clean because we need info for cross references
     depends:
       - figures_suppmat
+      - ms/refs-suppmat.bib
 
-  ms-suppinfo.tex:
+  ms/ms-suppinfo.tex:
     depends:
       - R/model.R
       - GCi
@@ -58,14 +60,6 @@ targets:
       - output/FigA9.pdf
       - output/GraphicalAbstract.pdf
 
-
-# ------- Rscript --------------------------
-# used to generate output for those who don't like remake
-
-  analysis.R:
-    packages: remake
-    command: make_script(file=target_name)
-
 # ------- References --------------------------
 
   paper_bib:
@@ -77,13 +71,13 @@ targets:
   combined_bib:
     command: merge_bib_files(meta_bib, paper_bib)
 
-  output/refs-main.bib:
+  ms/refs-main.bib:
     command: write.bib(combined_bib, file = target_name)
 
   suppmat_bib:
     command: merge_bib_files(combined_bib, read_bib)
 
-  output/refs-suppmat.bib:
+  ms/refs-suppmat.bib:
     command: write.bib(suppmat_bib, file = target_name)
 
   read_bib:

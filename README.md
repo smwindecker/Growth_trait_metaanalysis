@@ -19,26 +19,25 @@ We show that correlations between traits and GR change in a predictable way as a
 Running the code
 --------
 
-Here we present the data and the code to perform the meta-analyses and all the figures from the paper. Once you have the required packages installed, run this command:
+All analyses were done in `R`. To reproduce this paper, run the code contained in the `analysis.R` file. Figures will be output to a directory called `output`. Also saved in this file is a homogenized dataset, containing the data used in the analyses and included as supplementary material with the paper.
 
-```
-source("analysis.R")
-```
+If reproducing these results on your own machine, you must first install the required packages, listed under `Depends` in the `DESCRIPTION` file. 
 
-Figures will be output to a directory `output`. Also saved in this file is a homogenized dataset, containing the data used in the analyses and included as supplementary material with the paper.
+Alternatively, you can use an interactive RStudio session to run the `analysis.R` file with the required software pre-installed. This session is hosted by binder and can be accessed by clicking on the following:
+
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dfalster/Growth_trait_metaanalysis/master?urlpath=rstudio)
 
 List of files available and explanation
 --------
 
-- `data/CompileData.csv`: raw data, needed to run the analyses
-- `data/CompileData_meta.csv`:definition of columns in `data/ComplieData.csv`
+- `data/CompileData.csv` raw data, needed to run the analyses
+- `data/CompileData_meta.csv` definition of columns in `data/ComplieData.csv`
 - `R` directory containing functions used in analysis
-- `analysis.R`: main script to run the analyses and generate all the figures and tables.
-- `MS.tex`: manuscript in LaTex
-- `references/complete.bib`: bibtex file with all references used in the meta-analyses and in the manuscript
-- `references/meta-analyses.bib`: bibtex file with all references used in the meta-analyses
-- `references/read.bib`: bibtex file with all references red to do the meta-analyses (all the studies used + studies red but discard from our meta-analyses)
-- `mee.bst, ms.sty`: latex style file used for formatting paper
+- `analysis.R` main script to run the analyses and generate all the figures and tables.
+- `ms` directory containing manuscript in LaTeX and accompanying style files 
+- `references/complete.bib` bibtex file with all references used in the meta-analyses and in the manuscript
+- `references/meta-analyses.bib` bibtex file with all references used in the meta-analyses
+- `references/read.bib` bibtex file with all references red to do the meta-analyses (all the studies used + studies red but discard from our meta-analyses)
 
 Contributors
 ------------------------

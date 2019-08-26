@@ -1,11 +1,24 @@
 \documentclass[10pt,twoside]{article}
-
-\usepackage{suppmat}
 \usepackage{listings}
 \usepackage[T1]{fontenc} % Better underscores, shockingly.
 \usepackage{graphicx}
 
-\input{ms-common-defs}
+
+\usepackage{ms/suppmat}
+\definecolor{grey}{rgb}{0.5, 0.5, 0.5}
+\newcommand{\smurl}[1]{\url{#1}}
+\newcommand{\ud}{\ensuremath{\rm{d}}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+\title{On the link between functional traits and growth rate: meta-analysis shows effects change with plant size, as predicted}
+\author{Anaïs Gibert\textasteriskcentered, Emma F. Gray, Mark Westoby, Ian J. Wright, Daniel S. Falster}
+\affiliation{Department of Biological Sciences, Macquarie University,
+  Sydney, Australia \\
+\textasteriskcentered Correspondence author. E-mail: \texttt{anais.gibert@gmail.com}
+}
+\runninghead{I\lowercase{nfluence of traits on growth changes with size}}
+
 
 % We will generate all images so they have a width \maxwidth. This means
 % that they will get their normal width if they fit onto the page, but
@@ -21,7 +34,7 @@
 \date{}
 
 \usepackage[]{natbib}
-\bibliographystyle{mee}
+\bibliographystyle{ms/mee}
 
 \begin{document}
 
@@ -39,7 +52,7 @@
 
 \linespread{1}
 
-\begin{table}[h!]
+\begin{table}[!ht]
 \centering
 \caption{List of the nineteen traits targeted. Abbreviation,
 definition and search term used in the meta-analysis}
@@ -75,7 +88,7 @@ Aarea & Photosynthetic rate per area & ``photosynthetic rate per area'' OR ``rat
 \end{table}
 
 \clearpage
- \begin{table}[h!]
+ \begin{table}[!ht]
  \centering
  \caption{Check-list of criteria for meta-analysis in ecology developed by \citet{Koricheva:2014ku}.}
  {\footnotesize
@@ -90,7 +103,7 @@ Aarea & Photosynthetic rate per area & ``photosynthetic rate per area'' OR ``rat
   4.& Specifying meta-analytical model & yes & We use a mixed-effect model with a study ID as a random variable, and stage as a fixed effect. See ``Material and Methods'' for details. Results are shown in Fig. \ref{fig:fig3} \& \ref{fig:fig4}.\\
   5.& Quantifying heterogeneity in effect sizes &  yes & We estimate the extent of heterogeneity for each trait using the $I^{2}$ statistic. See Appendix \ref{app:supp_info_analyses} for details.\\
   6.& Exploring causes of heterogeneity & yes &  We explore the effect of stage, and the year of publication (see points 4 and 10 in this list).\\
-  7.& Multifactorial analysis of explanatory variable  & yes & We check whether several other explanatory moderators (i.e. growth measurement, experiment type or growth form) are consistently the strongest predictors of the data. We do not test the multiple variables in a hierarchical fashion, because of the limited size of our dataset. See in Figs \ref{fig:figA6}.\\
+  7.& Multifactorial analysis of explanatory variable  & yes & We check whether several other explanatory moderators (i.e. growth measurement, experiment type or growth form) are consistently the strongest predictors of the data. We do not test the multiple variables in a hierarchical fashion, because of the limited size of our dataset. See in Figs S2.\\
    8.& Testing for publication bias &  yes & We used several methods (i.e. funnel plots, the ``trim and fill'' method, and Rosenberg's fail-safe number). See Appendix \ref{app:supp_info_analyses} for details.\\
    9.& Sensitivity analysis &  yes &See ``Material and Methods'' for details, results in Figs \ref{fig:fig3} \& \ref{fig:figA5}.\\
    10.& Exploring temporal changes in effect size &  yes & See Appendix \ref{app:supp_info_analyses} for details.\\
@@ -184,24 +197,24 @@ The temporal changes were confounded with a ontogenetic stage effect in our meta
 
 \section{Supporting Figures}\label{app:supp_info_figures}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA1}
 \caption{Relationships between a) age and diameter (m), b) age and height (m), and c) diameter and height among plants in the Biomass and Allometry Database. Lines indicate the cut-offs between stage categories used in this study: blue lines indicate limit between seedlings and saplings, red lines indicate limits between saplings and adults.}
 \label{fig:figA1}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA6a}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA6b}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA6c}
 \caption{Effects size on the correlation between growth and traits of plant stage (mod1), growth measurement (mod2), vegetation type (mod3), and experiment type (mod4). a) Specific leaf area (SLA), b) Wood density (WD),c) Assimilation rate of CO2 (Aarea), d) Seed mass, and e) Asymptotic maximum height (Hmax). The effect size (z + 95\%CI) is reported for each class, and models are fitted by restricted max likelihood (REML). Abbreviation: GR = growth rate and RGR = relative growth rate, measured in diameter (D), height (H), mass(M), cross section area (CSA) and volume (V), across GF: coefficient of correlation measured on tree in mixture with other growth form. AIC: Akaike information criterion corresponds to the quality of each model, and allow a comparison between models. The smaller the AIC, the better the model is. Results shown here are from ``ideal'' subset of data (for details see ``Material and Methods''). ``n'' indicates number of correlation r reported.}
@@ -210,7 +223,7 @@ The temporal changes were confounded with a ontogenetic stage effect in our meta
 
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA4}
 \caption{Mean coefficient correlation r (+SD) between growth and traits measured by stage.  a) Specific leaf area (SLA), b) Wood density (WD), c) Asymptotic maximum height (Hmax), d) Seed mass (Seedmass) and e) Rate of CO2 assimilation (Aarea). The mean coefficients are weighted by sample size and established from 103 articles. Results shown here are from the ``ideal'' subset of data (for details see ``Material and Methods''), ``n'' indicates the number of correlations.}
@@ -219,7 +232,7 @@ The temporal changes were confounded with a ontogenetic stage effect in our meta
 
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA8}
 \caption{Number of correlation extracted by traits, stage, and growth type (absolute vs relative, and measurement). a) Specific leaf area (SLA), b) Wood density (WD), c) Asymptotic maximum height (Hmax), d) Seed mass and e) Assimilation rate of CO2 (Aarea). Absolute growth rate (AGR) is on the left and relative growth rate (RGR) on the right of each plot. Results shown here are from the ``ideal'' subset of the data (for details see ``Material and Methods''). }
@@ -228,7 +241,7 @@ The temporal changes were confounded with a ontogenetic stage effect in our meta
 
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA2}
 \caption{Geographical distribution of site locations from studies performed in the field used in the meta-analysis. Results shown here are from the entire dataset (for details see ``Material and Methods'').}
@@ -236,7 +249,7 @@ The temporal changes were confounded with a ontogenetic stage effect in our meta
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA3}
 \caption{Range of correlations (r) between
@@ -251,7 +264,7 @@ articles. The x axis represents the article ID sorted by the average reported co
 
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA7}
 \caption{Funnel plots with filled in data based on the trim and fill method, showing transformed correlation coefficient z between growth and a) Specific leaf area (SLA), b) Wood density (WD), c) Asymptotic maximum height (Hmax), d) Seed mass and e) Assimilation rate of CO2 (Aarea). Note that in these plots the y axis is 1/number of species included in the correlation, not the replication for the correlation. The open points correspond to the estimated missing studies. The number of missing values is 4 for SLA, 0 for wood density, 0 for maximum height, 11 for seed mass and 0 for Aarea. Results shown here are from the entire dataset. Results with the "ideal" subset of data (for details see ``Material and Methods''), shown no missing values for all traits.}
@@ -259,7 +272,7 @@ articles. The x axis represents the article ID sorted by the average reported co
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA9}
 \caption{Temporal changes in coefficient of correlation between growth and traits. a) Specific leaf area (SLA), b) Wood density (WD), c) Asymptotic maximum height (Hmax), d) Seed mass, and e) Assimilation rate of CO2 (Aarea). The colours correspond to the stage for which the r values have been recorded: red points corresponds to adult stage, orange points to saplings, and grey points to seedlings. Results shown here are from the entire dataset.}
@@ -267,7 +280,7 @@ articles. The x axis represents the article ID sorted by the average reported co
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=15cm,height=20cm,keepaspectratio]{output/FigA5}
 \caption{Effect size ($\pm$95\% confidence intervals, CI) of plant stage on the correlations between growth rate and five functional traits across species, with a data set averaging multiple comparisons by trait and by study. In the case of multiple comparisons within a study, effect sizes were calculated using the mean correlation coefficient by trait and by study. a) Specific leaf area (SLA), b) Wood density (WD), c) Asymptotic maximum height (Hmax) , d) Seed mass and e) Assimilation rate of CO2 (Aarea). Effect size is a standardized measure of the magnitude of the relationship between a particular stage and the correlation coefficient z (Fisher's z-transformed). Effects are significant if CIs do not overlap with zero. LRT: likelihood Ratio Test compared the fit between null model and stage model, both models are fitted by Maximum Likelihood. Black point: ideal data , grey points: all the data (for details see ``Material and Methods''). ``n'' indicates the number of independent comparisons for each effect.}
@@ -277,7 +290,7 @@ articles. The x axis represents the article ID sorted by the average reported co
 
 \clearpage
 
-\bibliography{output/refs-suppmat}
+\bibliography{ms/refs-suppmat}
 
 \end{document}
 
