@@ -34,11 +34,10 @@ List of files available and explanation
 - `data/CompileData_meta.csv`:definition of columns in `data/ComplieData.csv`
 - `R` directory containing functions used in analysis
 - `analysis.R`: main script to run the analyses and generate all the figures and tables.
-- `MS.tex`: manuscript in LaTex
+- `ms`: directory containing manuscript in LaTeX and accompanying style files 
 - `references/complete.bib`: bibtex file with all references used in the meta-analyses and in the manuscript
 - `references/meta-analyses.bib`: bibtex file with all references used in the meta-analyses
 - `references/read.bib`: bibtex file with all references red to do the meta-analyses (all the studies used + studies red but discard from our meta-analyses)
-- `mee.bst, ms.sty`: latex style file used for formatting paper
 
 Contributors
 ------------------------
