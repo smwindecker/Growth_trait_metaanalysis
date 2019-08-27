@@ -9,20 +9,6 @@ RUN    apt-get update \
          unzip
 
 # ---------------------------------------------
-# Add custom install here
-
-# Install packages
-RUN . /etc/environment \
-  && install2.r --error --r "https://mran.revolutionanalytics.com/snapshot/2019-07-23/" \
-  bibtex\
-  downloader\
-  gridExtra\
-  lme4\
-  metafor\
-  tinytex\
-  plyr
- 
-# ---------------------------------------------
 
 ENV NB_USER rstudio
 ENV NB_UID 1000
@@ -37,3 +23,20 @@ ENV LD_LIBRARY_PATH /usr/local/lib/R/lib
 
 ENV HOME /home/${NB_USER}
 WORKDIR ${HOME}
+
+# ---------------------------------------------
+
+## Copies your repo files into the Docker Container
+USER root
+COPY . ${HOME}
+RUN chown -R ${NB_USER} ${HOME}
+
+## Become normal user again
+USER ${NB_USER}
+
+# ---------------------------------------------
+# Add custom installations here
+
+## Install packages using DECRIPTION file 
+
+RUN if [ -f DESCRIPTION ]; then R --quiet -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2019-08-26/')); devtools::install_deps()"; fi
