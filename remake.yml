@@ -6,6 +6,7 @@ packages:
   - lme4
   - ggplot2
   - tinytex
+  - maps
 
 sources:
   - R

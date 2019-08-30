@@ -31,6 +31,7 @@ Depends:
     gridExtra,
     knitr,
     lme4,
+    maps,
     metafor,
     plyr,
     tinytex

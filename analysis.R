@@ -9,6 +9,7 @@ library(ggplot2)
 library(downloader)
 library(knitr)
 library(tinytex)
+library(maps)
 
 # Source function scripts -----------
 source("R/data_processing.R")
