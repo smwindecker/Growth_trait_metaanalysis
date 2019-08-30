@@ -1,8 +1,10 @@
 FROM traitecoevo/growth_trait_metaanalysis
 LABEL maintainer='Daniel Falster'
 
-# This file copied from
-# https://github.com/rocker-org/binder/blob/master/Dockerfile
+# Add Binder capabilities to existing Docker file specified above
+
+## Copied from rocker/binder 
+## https://github.com/rocker-org/binder/blob/master/Dockerfile
 
 ## If extending this image, remember to switch back to USER root to apt-get
 

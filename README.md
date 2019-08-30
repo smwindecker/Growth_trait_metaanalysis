@@ -64,7 +64,7 @@ You can launch the analysis on the web in an interactive RStudio session with th
 
 [![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/traitecoevo/Growth_trait_metaanalysis/master?urlpath=rstudio)
 
-## Running via Docker
+### Running via Docker
 
 If you have Docker installed, you can recreate the compute environment as follows. 
 
@@ -77,19 +77,21 @@ docker pull traitecoevo/growth_trait_metaanalysis
 Then launch it via:
 
 ```
-docker run -d -v $(pwd):/home/rstudio/ -p 127.0.0.1:8787:8787 \
--e DISABLE_AUTH=true traitecoevo/growth_trait_metaanalysis
+docker run --user root -v $(pwd):/home/rstudio/ -p 8787:8787 -e DISABLE_AUTH=true traitecoevo/growth_trait_metaanalysis
 ```
 
-The code above runs an rstudio session, which is accessed by pointing your browser to [localhost:8787](localhost:8787). For more info see instructions from [rocker](https://hub.docker.com/r/rocker/rstudio).
+The code above initialises a docker container, which runs an rstudio session, which is accessed by pointing your browser to [localhost:8787](http://localhost:8787). For more instructions on running docker, see the info from [rocker](https://hub.docker.com/r/rocker/rstudio).
 
-## Building the docker images (optional)
+Note, this container does not contain the actual github repo, only the software environment. If you run the above command from within your downloaded repo, it will map the working directory as the current working directory inside the docker container.
 
-For posterity, the docker image was built off [`rocker/verse:3.6.1` container](https://hub.docker.com/r/rocker/verse) via
+### Building the docker images (optional)
+
+For posterity, the docker image was built off [`rocker/verse:3.6.1` container](https://hub.docker.com/r/rocker/verse) via the following command, in a terminal contained within the downloaded repo:
 
 ```
 docker build -t traitecoevo/growth_trait_metaanalysis .
 ```
+
 and was then pushed to dockerhub ([here](https://cloud.docker.com/u/traitecoevo/repository/docker/traitecoevo/growth_trait_metaanalysis)). The image used by binder builds off this container, adding extra features needed bi binder, as described in [rocker/binder](https://hub.docker.com/r/rocker/binder/dockerfile).
 
 
