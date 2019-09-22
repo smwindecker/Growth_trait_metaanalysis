@@ -22,8 +22,8 @@ All analyses were done in `R`, and the paper is written in LaTeX. All code neede
 If you are reproducing these results on your own machine, first download the code and then install the required packages, listed under `Depends` in the `DESCRIPTION` file. This can be achieved by opening the Rstudio project and running:
 
 ```{r}
-#install.packages("devtools")
-devtools::install_deps()
+#install.packages("remotes")
+remotes::install_deps()
 ```
 
 You can access an interactive RStudio session with the required software pre-installed by opening a container hosted by [Binder](http://mybinder.org): 
@@ -45,7 +45,7 @@ A copy of the data has also been archived in Datadryad at [doi:10.5061/dryad.701
 		- `complete.bib`: references used in the meta-analyses and in the manuscript
 	- `meta-analyses.bib`: references used in the meta-analyses
 	- `read.bib`: all references read to do the meta-analyses (all the studies used + studies read but discarded from our meta-analyses)
-- `DECRIPTION`: A machine-readable [compendium]() file containing key metadata and dependencies 
+- `DESCRIPTION`: A machine-readable [compendium]() file containing key metadata and dependencies 
 - `LICENSE`: License for the materials
 - `Dockerfile` & `.binder/Dockerfile`: files used to generate docker containers for long-term reproducibility
 
@@ -53,7 +53,7 @@ A copy of the data has also been archived in Datadryad at [doi:10.5061/dryad.701
 
 If you have Docker installed, you can recreate the computing environment as follows in the terminal. 
 
-From the directory you'd like the this repo saved in, clone the repository:
+From the directory you'd like this repo saved in, clone the repository:
 
 ```
 git clone https://github.com/traitecoevo/Growth_trait_metaanalysis.git
