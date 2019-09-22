@@ -1,5 +1,4 @@
-Plant species traits and growth rates meta-analysis
---------
+# Plant species traits and growth rates meta-analysis
 
 This repository contains all the code used in the manuscript:
 
@@ -16,75 +15,65 @@ Traits should influence growth in a size-dependent manner. We outline mechanisms
 Results were consistent with predictions. Specific leaf area was correlated with GR in small but not large plants. Correlations of GR with wood density and assimilation rate were not affected by size. Maximum height and seed mass were correlated with GR only in one plant size category.
 We show that correlations between traits and GR change in a predictable way as a function of plant size. Our understanding of plant strategies should shift away from attributing slow vs fast growth to species throughout life, in favour of attributing growth trajectories.
 
-## List of files available and explanation
-
-This repository contains all the code and data needed to rerun the analyses presented. A copy of the data has also been archived in Datadryad at [doi:10.5061/dryad.701q8](https://datadryad.org/resource/doi:10.5061/dryad.701q8). 
-
-Files included in the repository here include:
-
-- `data/`: Raw data
-	- `CompileData.csv`: raw data, needed to run the analyses
-	- `CompileData_meta.csv`: definition of columns in `data/ComplieData.csv`
-- `R` directory containing functions used in analysis
-- `ms` directory containing manuscript in LaTeX and accompanying style files 
-- `references/`: bibtex files with references
-		- `complete.bib`: references used in the meta-analyses and in the manuscript
-	- `meta-analyses.bib`: references used in the meta-analyses
-	- `read.bib`: all references read to do the meta-analyses (all the studies used + studies read but discarded from our meta-analyses)
-
-Additional accessory files are also including:
-
-- `DECRIPTION`: A machine-readable [compendium]() file containing key metadata and dependencies 
-- `LICENSE`: License for the materials
-- `Dockerfile` & `.binder/Dockerfile`: files used to generate docker containers for long-term reproducibility
-
 ## Running the code
 
-All analyses were done in `R`, and the paper is written in LaTeX. All code needed to reproduce the submitted products is included in this repository. To reproduce this paper, run the code contained in the `analysis.R` file. Figures will be output to a directory called `output` and the paper and supplementary materials in the folder `ms`.
+All analyses were done in `R`, and the paper is written in LaTeX. All code needed to reproduce the submitted products is included in this repository. To reproduce this paper, run the code contained in the `analysis.R` file. Figures will be output to a directory called `output` and the paper and supplementary materials to the directory `ms`.
 
-
-The paper was written in 2016 using a version of R available at the time. With some minor updates, the code has been updated and was last seen running wild and free on R 3.6.1. You can try running it on your current version and it may work. 
-
-To ensure [computational reproducibility](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf) into the future, we have also generated [Docker](http://dockerhub.com) and [Binder](https://mybinder.org) containers, enabling you to launch a compute environment built off R 3.6.1 with all the dependencies included.
-
-### Running locally
-
-If reproducing these results on your own machine, first download the code and then install the required packages, listed under `Depends` in the `DESCRIPTION` file. This can be achieved by opening the Rstudio project and running:
+If you are reproducing these results on your own machine, first download the code and then install the required packages, listed under `Depends` in the `DESCRIPTION` file. This can be achieved by opening the Rstudio project and running:
 
 ```{r}
 #install.packages("devtools")
 devtools::install_deps()
 ```
 
-Then run `analysis.R`. 
+You can access an interactive RStudio session with the required software pre-installed by opening a container hosted by [Binder](http://mybinder.org): 
 
-### Running on Binder 
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/traitecoevo/growth_trait_metaanalysis/master?urlpath=rstudio)
 
-You can launch the analysis on the web in an interactive RStudio session with the required software pre-installed. This session is hosted by binder and can be accessed by clicking on the following:
+To ensure long-term [computational reproducibility](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf) of this work, we have created a [Docker](http://dockerhub.com) image to enable others to reproduce these results on their local machines using the same software and versions we used to conduct the original analysis. Instructions for reproducing this work using the docker image are available at the bottom of the page. 
 
-[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/traitecoevo/Growth_trait_metaanalysis/master?urlpath=rstudio)
+A copy of the data has also been archived in Datadryad at [doi:10.5061/dryad.701q8](https://datadryad.org/resource/doi:10.5061/dryad.701q8). 
 
-### Running via Docker
+## Material included in the repository include:
 
-If you have Docker installed, you can recreate the compute environment as follows. 
+- `data/`: Raw data
+	- `CompileData.csv`: raw data, needed to run the analyses
+	- `CompileData_meta.csv`: definition of columns in `data/ComplieData.csv`
+- `R/`: directory containing functions used in analysis
+- `ms/`: directory containing manuscript in LaTeX and accompanying style files 
+- `references/`: bibtex files with references
+		- `complete.bib`: references used in the meta-analyses and in the manuscript
+	- `meta-analyses.bib`: references used in the meta-analyses
+	- `read.bib`: all references read to do the meta-analyses (all the studies used + studies read but discarded from our meta-analyses)
+- `DECRIPTION`: A machine-readable [compendium]() file containing key metadata and dependencies 
+- `LICENSE`: License for the materials
+- `Dockerfile` & `.binder/Dockerfile`: files used to generate docker containers for long-term reproducibility
 
-First fetch the container:
+## Running via Docker
+
+If you have Docker installed, you can recreate the computing environment as follows in the terminal. 
+
+From the directory you'd like the this repo saved in, clone the repository:
+
+```
+git clone https://github.com/traitecoevo/traitecoevo/Growth_trait_metaanalysis.git
+```
+
+Then fetch the container:
 
 ```
 docker pull traitecoevo/growth_trait_metaanalysis
 ```
 
-Then launch it via:
+Navigate to the downloaded repo, then launch the container using the following code (it will map your current working directory inside the docker container): 
 
 ```
 docker run --user root -v $(pwd):/home/rstudio/ -p 8787:8787 -e DISABLE_AUTH=true traitecoevo/growth_trait_metaanalysis
 ```
 
-The code above initialises a docker container, which runs an rstudio session, which is accessed by pointing your browser to [localhost:8787](http://localhost:8787). For more instructions on running docker, see the info from [rocker](https://hub.docker.com/r/rocker/rstudio).
+The code above initialises a docker container, which runs an RStudio session accessed by pointing your browser to [localhost:8787](http://localhost:8787). For more instructions on running docker, see the info from [rocker](https://hub.docker.com/r/rocker/rstudio).
 
-Note, this container does not contain the actual github repo, only the software environment. If you run the above command from within your downloaded repo, it will map the working directory as the current working directory inside the docker container.
-
-### Building the docker images (optional)
+### NOTE: Building the docker image
 
 For posterity, the docker image was built off [`rocker/verse:3.6.1` container](https://hub.docker.com/r/rocker/verse) via the following command, in a terminal contained within the downloaded repo:
 
@@ -92,11 +81,10 @@ For posterity, the docker image was built off [`rocker/verse:3.6.1` container](h
 docker build -t traitecoevo/growth_trait_metaanalysis .
 ```
 
-and was then pushed to dockerhub ([here](https://cloud.docker.com/u/traitecoevo/repository/docker/traitecoevo/growth_trait_metaanalysis)). The image used by binder builds off this container, adding extra features needed bi binder, as described in [rocker/binder](https://hub.docker.com/r/rocker/binder/dockerfile).
+and was then pushed to [dockerhub](https://cloud.docker.com/u/traitecoevo/repository/docker/traitecoevo/growth_trait_metaanalysis). The image used by binder builds off this container, adding extra features needed by binder, as described in [rocker/binder](https://hub.docker.com/r/rocker/binder/dockerfile).
 
+## Contributors
 
-Contributors
-------------------------
-Daniel Falster
-Anais Gibert
-Saras Windecker (help with binder and reproducibility)
+  - Daniel Falster
+  - Anais Gibert
+  - Saras Windecker (help with binder and reproducibility)
