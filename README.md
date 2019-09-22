@@ -56,7 +56,7 @@ If you have Docker installed, you can recreate the computing environment as foll
 From the directory you'd like the this repo saved in, clone the repository:
 
 ```
-git clone https://github.com/traitecoevo/traitecoevo/Growth_trait_metaanalysis.git
+git clone https://github.com/traitecoevo/Growth_trait_metaanalysis.git
 ```
 
 Then fetch the container:
